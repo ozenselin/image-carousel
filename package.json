@@ -1,0 +1,44 @@
+{
+  "name": "@ozenselin/image-carousel",
+  "version": "1.0.0",
+  "description": "A lightweight image carousel with smooth transitions, multi-control navigation, dynamic scaling, and shadow effects",
+  "main": "dist/carousel.js",
+  "module": "dist/carousel.esm.js",
+  "browser": "dist/carousel.min.js",
+  "author": {
+    "name": "Selin Özen",
+    "email": "selinozens9@gmail.com",
+    "url": "https://yourdomain.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "image-carousel",
+    "multi-control",
+    "image-gallery",
+    "dynamic",
+    "ui-component",
+    "interactive",
+    "effects",
+    "carousel",
+    "slider",
+    "lightweight",
+    "gallery",
+    "css",
+    "vanilla-js"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.32.0",
+    "prettier": "3.6.2",
+    "rollup": "^3.0.0",
+    "rollup-plugin-postcss": "^4.0.2"
+  },
+  "files": [
+    "dist"
+  ]
+}
