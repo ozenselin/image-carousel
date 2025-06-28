@@ -1,0 +1,111 @@
+.carousel * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.carousel {
+  --clr-lighter: rgb(226, 216, 216);
+  --clr-light: rgb(171, 164, 164);
+  --clr-dark: rgb(99, 99, 99);
+  --clr-darker: rgb(43, 43, 43);
+  color: var(--clr-font-dark);
+  font-family:
+    system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.carousel__panel {
+  margin-top: 6em;
+  margin-bottom: 6em;
+  position: relative;
+  width: min-content;
+  max-width: 200vw;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-7em);
+}
+
+.carousel__list {
+  --clr-shadow-light: rgba(255, 255, 255, 0.5);
+  --clr-shadow-dark: rgba(0, 0, 0, 0.07);
+  --clr-background-dark: rgb(171, 164, 164);
+  position: relative;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  list-style: none;
+  transition: left 0.5s ease-in-out;
+}
+
+.carousel__item {
+  color: var(--clr-dark);
+  --transition-period: 0.5s;
+  font-size: 2rem;
+  width: 7em;
+  height: 7em;
+  background-color: var(--clr-light);
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  transition:
+    box-shadow var(--transition-period) ease,
+    transform var(--transition-period) ease;
+}
+
+.carousel__item--selected {
+  z-index: 1;
+  transform-origin: center;
+  box-shadow:
+    0 1px 2px var(--clr-shadow-light),
+    0 2px 4px var(--clr-shadow-light),
+    0 4px 8px var(--clr-shadow-light),
+    0 8px 16px var(--clr-shadow-light),
+    0 16px 32px var(--clr-shadow-light),
+    0 32px 64px var(--clr-shadow-light);
+}
+
+.carousel__indicators {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.25em;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+.carousel__dot {
+  display: inline-block;
+  border: 2px solid var(--clr-dark);
+  padding: 3.5px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.carousel__dot--selected {
+  background-color: var(--clr-dark);
+}
+
+.carousel__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
+
+.carousel__button {
+  background-color: var(--clr-darker);
+  border: unset;
+  color: var(--clr-lighter);
+  border-radius: 1em;
+  font: inherit;
+  padding: 0em 1em;
+}
