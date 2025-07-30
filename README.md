@@ -4,6 +4,14 @@ A clean and responsive image carousel that displays a series of images with smoo
 
 The carousel offers basic configuration options including custom class names, scaling behavior, and image sources—making it easy to adapt visually without introducing complexity.
 
+## Live Demo
+
+The GIF here demonstrates the basic functionality, but the actual carousel transitions are smoother and more fluid.
+
+![](carousel-demo.gif)
+
+Note that the carousel also supports **left and right arrow keys**, as well as **indicator dots**, though this GIF shows navigation via the **Previous** and **Next** buttons for clearer visual demonstration.
+
 ## What You Can Configure
 - Images: Pass your own image list (with src, alt, and width)
 - CSS Classes: Customize class names for every element (panels, buttons, indicators)
