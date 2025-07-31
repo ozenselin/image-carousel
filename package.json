@@ -1,6 +1,6 @@
 {
   "name": "@ozenselin/image-carousel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight image carousel with smooth transitions, multi-control navigation, dynamic scaling, and shadow effects",
   "main": "dist/carousel.js",
   "module": "dist/carousel.esm.js",
