@@ -13,8 +13,8 @@ export const createCarouselDOM = (rootElement, config) => {
   const cacheElements = () => {
     elements = {
       list: rootElement.querySelector(`.${config.classes.list}`),
-      nextButton: rootElement.querySelector(`.${config.classes.nextButton}`),
-      previousButton: rootElement.querySelector(
+      nextButtons: rootElement.querySelectorAll(`.${config.classes.nextButton}`),
+      previousButtons: rootElement.querySelectorAll(
         `.${config.classes.previousButton}`
       ),
       dotsContainer: rootElement.querySelector(
@@ -53,20 +53,28 @@ export const createCarouselDOM = (rootElement, config) => {
 
   const injectHTML = () => {
     rootElement.innerHTML = `
-      <div class="${config.classes.carousel}">
-        <div class="${config.classes.panel}">
-          <ul class="${config.classes.list}"></ul>
-        </div>
-        <div class="${config.classes.dotsContainer}"></div>
-        <div class="${config.classes.buttonsContainer}">
-          <button class="${config.classes.button} ${config.classes.previousButton}" type="button">
-            Previous
-          </button>
-          <button class="${config.classes.button} ${config.classes.nextButton}" type="button">
-            Next
-          </button>
-        </div>
+    <div class="${config.classes.carousel}">
+      <div class="carousel__navigation carousel__navigation--overlay">
+        <button class="${config.classes.button} ${config.classes.previousButton}" type="button">
+          <svg class="carousel__icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+        </button>
+        <button class="${config.classes.button} ${config.classes.nextButton}" type="button">
+          <svg class="carousel__icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+        </button>
       </div>
+      <div class="${config.classes.panel}">
+        <ul class="${config.classes.list}"></ul>
+      </div>
+      <div class="carousel__navigation carousel__navigation--bottom">
+        <button class="${config.classes.button} ${config.classes.previousButton}" type="button">
+          <svg class="carousel__icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+        </button>
+        <div class="${config.classes.dotsContainer}"></div>
+        <button class="${config.classes.button} ${config.classes.nextButton}" type="button">
+          <svg class="carousel__icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+        </button>
+      </div>
+    </div>
     `;
 
     const list = rootElement.querySelector(`.${config.classes.list}`);
