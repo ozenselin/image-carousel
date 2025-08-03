@@ -67,7 +67,12 @@ export const createCarouselEvents = (rootElement, state, dom, config) => {
     const elements = dom.getElements();
 
     addEventListener(elements.nextButton, "click", handleNext);
-    addEventListener(elements.previousButton, "click", handlePrevious);
+    elements.previousButtons.forEach((previousButton) => {
+        addEventListener(previousButton, "click", handlePrevious);
+    });
+    elements.nextButtons.forEach((nextButton) => {
+        addEventListener(nextButton, "click", handleNext);
+    });
     addEventListener(elements.dotsContainer, "click", handleDotClick);
     addEventListener(document, "keydown", handleKeydown);
   };
