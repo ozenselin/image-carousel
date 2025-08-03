@@ -5,38 +5,61 @@
 }
 
 .carousel {
-  --clr-lighter: rgb(226, 216, 216);
-  --clr-light: rgb(171, 164, 164);
-  --clr-dark: rgb(99, 99, 99);
-  --clr-darker: rgb(43, 43, 43);
-  color: var(--clr-font-dark);
+  --item-width: 14rem;
+  --item-height: 14rem;
+  --shadow-color: rgba(255, 255, 255, 0.5);
+
+  --panel-margin-top: 6em;
+  --panel-margin-bottom: 6em;
+  
+  --dot-padding: 3.5px;
+  --dot-border-width: 2px;
+  --dot-gap: 0.25em;
+  --dot-bg-color: transparent;
+  --dot-border-color: rgb(127, 127, 127);
+  --dot-selected-bg-color: rgb(127, 127, 127);
+  --dot-selected-border-color: rgb(127, 127, 127);
+  --dot-transition-period: 0.3s;
+  
+  --icon-width: 1.75rem;
+  --icon-fill-color: rgb(70, 70, 70);
+  --nav-overlay-padding: 2rem;
+  --nav-overlay-button-bg-color:rgb(245, 245, 245);
+  --nav-overlay-button-bg-opacity: 0.9;
+  --nav-overlay-button-bg-scale: 2.2;
+  --nav-overlay-button-bg-blur: 10px;
+  --nav-overlay-icon-fill-color: rgb(70, 70, 70);
+  --nav-overlay-icon-width: 1.75rem;
+  
+  --nav-bottom-gap: 0.25em;
+  --nav-bottom-icon-fill-color: rgb(127, 127, 127);
+  --nav-bottom-icon-width: 1.25rem;
+
+  --transition-period: 0.5s;
+  --transition-timing-function: ease-in-out;
+
   font-family:
     system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  position: relative;
 }
 
 .carousel__panel {
-  margin-top: 6em;
-  margin-bottom: 6em;
+  margin-top: var(--panel-margin-top);
+  margin-bottom: var(--panel-margin-bottom);
   position: relative;
   width: min-content;
   max-width: 200vw;
   top: 50%;
   left: 50%;
-  transform: translateX(-7em);
+  /* Paneli tam ortalamak için eleman genişliğinin yarısı kadar sola kaydırıyoruz */
+  transform: translateX(calc(var(--item-width) / -2));
 }
 
 .carousel__list {
-  --clr-shadow-light: rgba(255, 255, 255, 0.5);
-  --clr-shadow-dark: rgba(0, 0, 0, 0.07);
-  --clr-background-dark: rgb(171, 164, 164);
   position: relative;
   top: 0;
   left: 0;
@@ -44,16 +67,15 @@
   grid-auto-flow: column;
   justify-items: center;
   list-style: none;
-  transition: left 0.5s ease-in-out;
+  transition: left var(--transition-period) var(--transition-timing-function);
 }
 
 .carousel__item {
-  color: var(--clr-dark);
-  --transition-period: 0.5s;
+  color: rgb(99, 99, 99);
   font-size: 2rem;
-  width: 7em;
-  height: 7em;
-  background-color: var(--clr-light);
+  width: var(--item-width);
+  height: var(--item-height);
+  background-color: rgb(171, 164, 164);
   display: grid;
   align-content: center;
   justify-content: center;
@@ -66,46 +88,95 @@
   z-index: 1;
   transform-origin: center;
   box-shadow:
-    0 1px 2px var(--clr-shadow-light),
-    0 2px 4px var(--clr-shadow-light),
-    0 4px 8px var(--clr-shadow-light),
-    0 8px 16px var(--clr-shadow-light),
-    0 16px 32px var(--clr-shadow-light),
-    0 32px 64px var(--clr-shadow-light);
+    0 1px 2px 1px var(--shadow-color),
+    0 2px 4px 2px var(--shadow-color),
+    0 4px 8px 4px var(--shadow-color),
+    0 8px 16px 8px var(--shadow-color),
+    0 16px 32px 8px var(--shadow-color);
 }
 
 .carousel__indicators {
   display: grid;
   grid-auto-flow: column;
-  gap: 0.25em;
-  justify-content: center;
-  margin-bottom: 3em;
+  gap: var(--dot-gap);
 }
 
 .carousel__dot {
   display: inline-block;
-  border: 2px solid var(--clr-dark);
-  padding: 3.5px;
+  border: var(--dot-border-width) solid var(--dot-border-color);
+  background-color: var(--dot-bg-color);
+  padding: var(--dot-padding);
   border-radius: 50%;
-  transition: background-color 0.3s;
+  transition: 
+    transform var(--dot-transition-period) ease-out;
 }
 
 .carousel__dot--selected {
-  background-color: var(--clr-dark);
+  border-color: var(--dot-selected-border-color);
+  background-color: var(--dot-selected-bg-color);
 }
 
-.carousel__actions {
+.carousel__navigation--bottom {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 1em;
+  align-items: center;
+  gap: var(--nav-bottom-gap);
 }
 
 .carousel__button {
-  background-color: var(--clr-darker);
   border: unset;
-  color: var(--clr-lighter);
-  border-radius: 1em;
+  background-color: transparent;
   font: inherit;
-  padding: 0em 1em;
+  display: inline-grid;
+  place-items: center;
+}
+
+.carousel__icon {
+  width: var(--icon-width);
+}
+
+.carousel__navigation--bottom .carousel__icon {
+  fill: var(--nav-bottom-icon-fill-color);
+  width: var(--nav-bottom-icon-width);
+}
+
+.carousel__navigation--overlay .carousel__icon {
+  fill: var(--nav-overlay-icon-fill-color);
+  width: var(--nav-overlay-icon-width);
+}
+
+.carousel__navigation--overlay {
+  position: absolute;
+  width: 100%;
+  transform: translateY(-50%);
+  margin-top: calc(var(--item-height)/2 + var(--panel-margin-top));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--nav-overlay-padding);
+  z-index: 1;
+}
+
+.carousel__navigation--overlay .carousel__button {
+  position: relative;
+}
+
+.carousel__navigation--overlay .carousel__button::before,
+.carousel__navigation--overlay .carousel__button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--icon-width) * var(--nav-overlay-button-bg-scale));
+  height: calc(var(--icon-width) * var(--nav-overlay-button-bg-scale));
+  border-radius: 50%;
+  background-color: var(--nav-overlay-button-bg-color);
+  z-index: -1;
+  opacity: var(--nav-overlay-button-bg-opacity);
+}
+
+.carousel__navigation--overlay .carousel__button::before {
+  filter: blur(var(--nav-overlay-button-bg-blur));
 }
