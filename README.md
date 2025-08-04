@@ -8,9 +8,9 @@ The carousel offers basic configuration options including custom class names, sc
 
 The GIF here demonstrates the basic functionality, but the actual carousel transitions are smoother and more fluid.
 
-![](carousel-demo.gif)
+![](carousel-demo-v1.1.gif)
 
-Note that the carousel also supports **left and right arrow keys**, as well as **indicator dots**, though this GIF shows navigation via the **Previous** and **Next** buttons for clearer visual demonstration.
+Note that the carousel also supports **left and right arrow keys**.
 
 ## What You Can Configure
 - Images: Pass your own image list (with src, alt, and width)
